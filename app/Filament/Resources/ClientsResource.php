@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Support\RawJs;
 
 class ClientsResource extends Resource
 {
@@ -60,6 +61,9 @@ class ClientsResource extends Resource
                     ->simple(
                         TextInput::make('number')
                             ->required()
+                            ->mask(RawJs::make(<<<'JS'
+                            $input.length >= 14 ? '(99) 99999-9999' : '(99) 9999-9999'
+                        JS))
                     )
                     ->label('Telefone'),
                 Select::make('sellers')
