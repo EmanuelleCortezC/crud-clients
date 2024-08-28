@@ -7,11 +7,16 @@ use App\Filament\Resources\ClientsResource\RelationManagers;
 use App\Models\Clients;
 use App\Models\ClientTypes;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -19,22 +24,27 @@ class ClientsResource extends Resource
 {
     protected static ?string $model = Clients::class;
 
+    public static function getModelLabel(): string
+    {
+        return __('Clientes');
+    }
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->label('Nome')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->label('E-mail')
                     ->email()
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true),
+                FileUpload::make('image')
                     ->label('Imagem')
                     ->image()
                     ->directory('images')
@@ -45,6 +55,19 @@ class ClientsResource extends Resource
                         ClientTypes::all()->pluck('type', 'id')->toArray()
                     )
                     ->required(),
+                Repeater::make('phones')
+                    ->relationship()
+                    ->simple(
+                        TextInput::make('number')
+                            ->required()
+                    )
+                    ->label('Telefone'),
+                Select::make('sellers')
+                    ->multiple()
+                    ->relationship('sellers', 'name')
+                    ->label('Vendedores')
+                    ->searchable()
+                    ->preload()
             ]);
     }
 
@@ -52,19 +75,28 @@ class ClientsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
+                    ->label('Nome')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                TextColumn::make('email')
+                    ->label('E-mail')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('type_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
+                ImageColumn::make('image')
+                    ->label('Imagem'),
+                TextColumn::make('type.type')
+                    ->label('Tipo')
+                    ->searchable(),
+                TextColumn::make('phones.number')
+                    ->label('Telefones')
+                    ->searchable(),
+                TextColumn::make('sellers.name')
+                    ->label('Vendedores')
+                    ->searchable(),
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

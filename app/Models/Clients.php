@@ -19,6 +19,7 @@ class Clients extends Model
         'type_id',
     ];
 
+
     public function type()
     {
         return $this->belongsTo(ClientTypes::class, 'type_id');
@@ -31,6 +32,6 @@ class Clients extends Model
 
     public function phones()
     {
-        return $this->hasMany(Phones::class);
+        return $this->hasMany(Phones::class, 'client_id');
     }
 }
