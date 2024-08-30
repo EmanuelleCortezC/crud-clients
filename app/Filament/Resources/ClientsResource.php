@@ -65,6 +65,7 @@ class ClientsResource extends Resource
                             ->mask(RawJs::make(<<<'JS'
                             $input.length >= 15 ? '(99) 99999-9999' : '(99) 9999-9999'
                         JS))
+                    ->unique(ignoreRecord: true)
                     )
                     ->label('Telefone'),
                 Select::make('sellers')
@@ -72,7 +73,7 @@ class ClientsResource extends Resource
                     ->relationship('sellers', 'name')
                     ->label('Vendedores')
                     ->searchable()
-                    ->preload()
+                    ->preload(),
             ]);
     }
 
