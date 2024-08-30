@@ -60,9 +60,10 @@ class ClientsResource extends Resource
                     ->relationship()
                     ->simple(
                         TextInput::make('number')
+                            ->minLength(14)
                             ->required()
                             ->mask(RawJs::make(<<<'JS'
-                            $input.length >= 14 ? '(99) 99999-9999' : '(99) 9999-9999'
+                            $input.length >= 15 ? '(99) 99999-9999' : '(99) 9999-9999'
                         JS))
                     )
                     ->label('Telefone'),

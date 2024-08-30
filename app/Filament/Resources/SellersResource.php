@@ -35,7 +35,8 @@ class SellersResource extends Resource
                     ->label('E-mail')
                     ->email()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->unique(),
             ]);
     }
 
