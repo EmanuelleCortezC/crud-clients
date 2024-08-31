@@ -53,12 +53,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ $message->embed('storage/images/company-logo.png') }}" alt="Wolf Components">
+            <img src="{{ $message->embed(public_path('storage/images/company-logo.png')) }}" alt="Wolf Components">
         </div>
         <div class="content">
-            <h1>Bem-vindo à Wolf Components {{ $client->name }}! </h1>
-            <p>Aqui na Wolf Components, somos lobos quando o assunto é tecnologia! Oferecemos tudo que você precisa para montar, atualizar ou manter seu computador: peças de alta qualidade, periféricos top de linha, e serviços de montagem e manutenção.</p>
-            <p>Nosso diferencial? Entregamos rápido, com serviço garantido em todo o Brasil. Seja onde for, nosso bando está pronto para te atender. Conte com a gente para cuidar da sua máquina com a força e agilidade de um lobo!</p>
+            <h1>Bem-vindo(a) à Wolf Components, </h1>
+            <h1>{{ $client->name }}! </h1>
+            <p>Se você busca a melhor loja para peças de qualidade, periféricos, montagens e manutenção de computadores, você está no lugar certo!</p>
+            <p>Entregamos rápido, com serviço garantido em todo o Brasil. Nossa equipe está pronta para cuidar de cada detalhe do seu pedido, desde a compra até a entrega. Está esperando o que para se juntar a matilha?</p>
         </div>
         <div class="footer">
             <p>
@@ -66,11 +67,11 @@
                 <br>
                 Equipe Wolf Components
             </p>
-            <p>Endereço: Rua Nova Esperança, 123, Vila Olímpica, São Paulo - SP, 01234-567
+            <p>Rua Nova Esperança, 123, Vila Olímpica, São Paulo - SP, 01234-567
                 <br>
                 <a href="mailto:contato@wolfcomponents.com">contato@wolfcomponents.com</a>
             </p>
-            <p>© 2024 Wolf Components. Siga o bando!</p>
+            <p>© 2024 Wolf Components. Siga a matilha!</p>
         </div>
     </div>
 </body>
