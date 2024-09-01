@@ -6,52 +6,45 @@ A aplicação contém disparo de e-mail utilizando filas, contém uma API autent
 ## Sumário
 
 - [Configuração](#configuração-do-ambiente)
-- [Documentação da API](documentação-da-api)
+- [Documentação da API](#documentação-da-api)
 
 
 ## Configuração do Ambiente
 
 **Clone o repositório:**
-
-```bash   
-git clone https://github.com/EmanuelleCortezC/crud-clients.git
-cd crud-clients
-
+```bash
+git clone https://github.com/EmanuelleCortezC/crud-clients.git cd crud-clients
+```
 
 **Copie o Arquivo .env para ajustar as configurações**
-
-```bash    
+```bash
 cp .env.example .env
-   
+```  
     
 **Crie e inicie os contêineres**
-
-    
-    docker-compose up -d
- 
+```bash 
+docker-compose up -d
+```
 
 **Execute as migrações do banco de dados e seeders**
-
-    ```bash
-    docker-compose exec laravel.test php artisan migrate
-    docker-compose exec laravel.test php artisan db:seed
-      ```
+```bash
+docker-compose exec laravel.test php artisan migrate
+docker-compose exec laravel.test php artisan db:seed
+```
 
 **Compile os assets com Vite**
-
-   
-     docker-compose exec laravel.test npm install
-     docker-compose exec laravel.test npm run build
-     docker-compose exec laravel.test npm run dev
-  
+```bash   
+docker-compose exec laravel.test npm install
+docker-compose exec laravel.test npm run build
+docker-compose exec laravel.test npm run dev
+```  
       
 **Acesse a aplicação pelo http://localhost para visualizar a aplicação em execução**
 
 **Os e-mails são enviados usando a fila. Para processar a fila, execute**
-
-   
-    php artisan queue:work --queue=emails
-  
+```bash  
+php artisan queue:work --queue=emails
+```  
 ---
 
 ## Documentação da API
@@ -63,33 +56,34 @@ A API possui autenticação, para conseguir acesso é necessário gerar um token
 
 Utilizando o Postman ou a sua plataforma de preferência de API, faça uma requisição do método POST utilizando o Endpoint `/api/login` e o corpo contendo o seu email e sua senha da seguinte forma:
 
-   
+```json   
     {
         "email": "seu-email@gmail.com",
         "password": "sua-senha"
     }
-    ```
+```
 Caso não ocorra nenhum a resposta de retorno será seu token
 
+```json
     
     {
         "token": "token-de-autenticacao"
     }
-    ```
+```
 Após a geração do token inclua-o no Header, a Key sendo `Authorization` e o Value `Bearer token-de-autenticacao`
 
-    
+```json    
     {
         "email": "seu-email@gmail.com",
         "password": "sua-senha"
     }
-   
+```   
 **Listar Clientes**
 
 Faça uma requisição do método GET utilizando o Endpoint `/api/login` e caso você deseje filtrar algum cliente específico, adicione o nome no filtro da busca.
 Resposta de Sucesso:
 
-    ```json  
+```json
         {
             "data": [
                 {
@@ -147,7 +141,7 @@ Resposta de Sucesso:
             "total": 2
         }
     }
-   
+```   
 
     
 ---
