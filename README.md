@@ -13,20 +13,20 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
 
 **Clone o repositório:**
 
-    ```bash
+   
     git clone https://github.com/EmanuelleCortezC/crud-clients.git
     cd crud-clients
     
    
 **Copie o Arquivo .env para ajustar as configurações**
 
-    ```bash
+    
     cp .env.example .env
    
     
 **Crie e inicie os contêineres**
 
-    ```bash
+    
     docker-compose up -d
  
 
@@ -39,7 +39,7 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
 
 **Compile os assets com Vite**
 
-    ```bash
+   
      docker-compose exec laravel.test npm install
      docker-compose exec laravel.test npm run build
      docker-compose exec laravel.test npm run dev
@@ -49,7 +49,7 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
 
 **Os e-mails são enviados usando a fila. Para processar a fila, execute**
 
-    ```bash
+   
     php artisan queue:work --queue=emails
   
 ---
@@ -63,7 +63,7 @@ A API possui autenticação, para conseguir acesso é necessário gerar um token
 
 Utilizando o Postman ou a sua plataforma de preferência de API, faça uma requisição do método POST utilizando o Endpoint `/api/login` e o corpo contendo o seu email e sua senha da seguinte forma:
 
-    ```json
+   
     {
         "email": "seu-email@gmail.com",
         "password": "sua-senha"
@@ -71,25 +71,25 @@ Utilizando o Postman ou a sua plataforma de preferência de API, faça uma requi
     ```
 Caso não ocorra nenhum a resposta de retorno será seu token
 
-    ```json
+    
     {
         "token": "token-de-autenticacao"
     }
     ```
 Após a geração do token inclua-o no Header, a Key sendo `Authorization` e o Value `Bearer token-de-autenticacao`
 
-    ```http
+    
     {
         "email": "seu-email@gmail.com",
         "password": "sua-senha"
     }
-    ```
+   
 **Listar Clientes**
 
 Faça uma requisição do método GET utilizando o Endpoint `/api/login` e caso você deseje filtrar algum cliente específico, adicione o nome no filtro da busca.
 Resposta de Sucesso:
 
-    ```json
+    
         {
             "data": [
                 {
@@ -147,5 +147,5 @@ Resposta de Sucesso:
             "total": 2
         }
     }
-    ```
+    
 ---
