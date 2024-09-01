@@ -16,19 +16,19 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
     ```bash
     git clone https://github.com/EmanuelleCortezC/crud-clients.git
     cd crud-clients
-    ```
+    
    
 **Copie o Arquivo .env para ajustar as configurações**
 
     ```bash
     cp .env.example .env
-    ```
+   
     
 **Crie e inicie os contêineres**
 
     ```bash
     docker-compose up -d
-    ```
+ 
 
 **Execute as migrações do banco de dados e seeders**
 
@@ -43,7 +43,7 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
      docker-compose exec laravel.test npm install
      docker-compose exec laravel.test npm run build
      docker-compose exec laravel.test npm run dev
-    ```
+  
       
 **Acesse a aplicação pelo http://localhost para visualizar a aplicação em execução**
 
@@ -51,7 +51,7 @@ A aplicação contém dispara de e-mail utilizando filas, contém uma API autent
 
     ```bash
     php artisan queue:work --queue=emails
-    ```
+  
 ---
 
 ## Documentação da API
