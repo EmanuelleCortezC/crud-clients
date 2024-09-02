@@ -74,12 +74,6 @@ Caso não ocorra nenhum a resposta de retorno será seu token
 ```
 Após a geração do token inclua-o no Header, a Key sendo `Authorization` e o Value `Bearer token-de-autenticacao`
 
-```json    
-    {
-        "email": "seu-email@gmail.com",
-        "password": "sua-senha"
-    }
-```   
 **Listar Clientes**
 
 Faça uma requisição do método GET utilizando o Endpoint `/api/login` e caso você deseje filtrar algum cliente específico, adicione o nome no filtro da busca.
