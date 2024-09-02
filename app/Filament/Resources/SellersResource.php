@@ -21,7 +21,7 @@ class SellersResource extends Resource
     {
         return __('Vendedores');
     }
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
 
     public static function form(Form $form): Form
     {
@@ -36,7 +36,7 @@ class SellersResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255)
-                    ->unique(),
+                    ->unique(ignoreRecord: true),
             ]);
     }
 
