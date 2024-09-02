@@ -1,7 +1,8 @@
 ## Sistema de Gerenciamento de Clientes
 
-Este projeto foi criado para solucionar o gerenciamento de clientes de empresas. A aplicação permite a criação, leitura, atualização e exclusão de informações sobre clientes e também de vendedores. É desenvolvida utilizando Laravel e PHP, utilizando o Docker para facilitar a configuração do ambiente.
-A aplicação contém disparo de e-mail utilizando filas, contém uma API autenticada para consultar clientes com filtro de nome, utilização de cache e VITE. Os formulários foram construídos utilizando filament.
+Este projeto foi criado para solucionar o gerenciamento de clientes de empresas. A aplicação permite a criação, leitura, atualização e exclusão de informações sobre clientes e também de vendedores. É desenvolvida utilizando Laravel e PHP e o Docker para facilitar a configuração do ambiente.
+A aplicação contém disparo de e-mail utilizando filas, contém uma API autenticada para consultar clientes com filtro de nome, utilização de cache e VITE. 
+Os formulários foram construídos utilizando filament.
 
 ## Sumário
 
@@ -13,7 +14,8 @@ A aplicação contém disparo de e-mail utilizando filas, contém uma API autent
 
 **Clone o repositório:**
 ```bash
-git clone https://github.com/EmanuelleCortezC/crud-clients.git cd crud-clients
+git clone https://github.com/EmanuelleCortezC/crud-clients.git
+cd crud-clients
 ```
 
 **Copie o Arquivo .env para ajustar as configurações**
